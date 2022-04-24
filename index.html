@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h2>Node RateLimiter Using redisDB</h2>
+        <hr/>
+
+        <h3>Enter text to calculate HASH</h3>
+        <div>
+            <input type="text" id="txt1" autocomplete="off"/>
+            <input type="button" id="butt1" value="Submit"/> 
+        </div>
+        <div>
+            <h4 id="hash1"></h4>
+            <h5 id="prob" style="color : red"></h5>
+        </div>
+        <script>
+            document.querySelector('#butt1').addEventListener('click' , ()=>{
+                const txt1 = document.getElementById("txt1").value;
+                //  get request to /hash endpoint
+                fetch(`/hash/${txt1}/${5}`)
+                .then(res => res.json())
+                .then(data => {
+                    if(data.success == true){
+                        document.getElementById("prob").innerText = '';
+                        document.getElementById("hash1").innerText = data.text;
+                    }else{
+                        document.getElementById("prob").innerText = data.text;
+                    }
+                })
+            })
+        </script>
+    </body>
+
+</html>
