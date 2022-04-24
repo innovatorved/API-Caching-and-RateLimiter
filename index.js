@@ -35,12 +35,10 @@ app.get("/hash/:text", async (req, res) => {
                 timeRefer : end-start
            });
         }
-
         const hashCodedText = await bcrypt.hash(plainText, 10);
-
         if(hashCodedText !== undefined){
             end = new Date();
-            await redis.set(plainText, hashCodedText);
+            await redis.setex(plainText ,60, hashCodedText);
             res.statusCode = 200;
             return res.json({
                 success: true, 
@@ -68,5 +66,7 @@ app.get("/hash/:text", async (req, res) => {
     }
 });
 
-console.log(`${host}:${port}/`);
-app.listen(port);
+
+app.listen(port , ()=>{
+    console.log(`${host}:${port}/`);
+});
