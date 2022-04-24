@@ -22,7 +22,7 @@
             document.querySelector('#butt1').addEventListener('click' , ()=>{
                 const txt1 = document.getElementById("txt1").value;
                 //  get request to /hash endpoint
-                fetch(`/hash/${txt1}/${5}`)
+                fetch(`/hash/${txt1}/`)
                 .then(res => res.json())
                 .then(data => {
                     if(data.success == true){
@@ -35,5 +35,4 @@
             })
         </script>
     </body>
-
 </html>

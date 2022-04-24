@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "ioredis": "^5.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
