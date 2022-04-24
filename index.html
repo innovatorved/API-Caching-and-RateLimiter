@@ -16,23 +16,9 @@
         </div>
         <div>
             <h4 id="hash1"></h4>
+            <span id="time1"></span>
             <h5 id="prob" style="color : red"></h5>
         </div>
-        <script>
-            document.querySelector('#butt1').addEventListener('click' , ()=>{
-                const txt1 = document.getElementById("txt1").value;
-                //  get request to /hash endpoint
-                fetch(`/hash/${txt1}/`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.success == true){
-                        document.getElementById("prob").innerText = '';
-                        document.getElementById("hash1").innerText = data.text;
-                    }else{
-                        document.getElementById("prob").innerText = data.text;
-                    }
-                })
-            })
-        </script>
+        <script src="./js/main.js"></script>
     </body>
 </html>
