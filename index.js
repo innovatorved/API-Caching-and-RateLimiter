@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const port = process.env.PUBLIC_PORT || 3003;
-const host = "http://localhost";
+const host = process.env.HOST || "http://localhost";
 
 const redis = require("./redis-client");
 require("dotenv").config();
@@ -68,5 +68,5 @@ app.get("/hash/:text", async (req, res) => {
     }
 });
 
-console.log(`visit : ${host}:${port}/`);
+console.log(`${host}:${port}/`);
 app.listen(port);
